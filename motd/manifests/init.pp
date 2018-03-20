@@ -35,11 +35,12 @@
 #
 # Copyright 2018 Your name here, unless otherwise noted.
 #
-class motd {
-
+class motd (
+  $motd_message = $motd::params::motd_messages
+) inherits motd::params {
   file { '/etc/motd':
     ensure  => present,
-    content => "This is set from Satellite",
+    content => $motd_message
   }
 
 }
